@@ -1,5 +1,5 @@
 {
-  "name": "icamys/php-sitemap-generator",
+  "name": "gmatkowski/php-sitemap-generator",
   "version": "1.0.1",
   "description": "Simple PHP sitemap generator.",
   "keywords": ["php", "sitemap", "generator", "psr-1", "psr-2", "psr-4"],
