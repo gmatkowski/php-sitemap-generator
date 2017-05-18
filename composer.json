@@ -19,6 +19,6 @@
     "ext-SPL": "*"
   },
   "autoload": {
-    "psr-4": {"Icamys\\SitemapGenerator\\": "src/"}
+    "psr-4": {"gmatkowski\\SitemapGenerator\\": "src/"}
   }
 }
