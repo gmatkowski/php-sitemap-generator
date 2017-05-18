@@ -11,7 +11,7 @@ class SitemapGenerator {
     const URL_PARAM_LASTMOD = 1;
     const URL_PARAM_CHANGEFREQ = 2;
     const URL_PARAM_PRIORITY = 3;
-    const URL_PARAM_IMAGE = null;
+    const URL_PARAM_IMAGE = 4;
 
     /**
      * Name of sitemap file
