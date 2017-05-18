@@ -26,7 +26,7 @@ $generator->sitemapFileName = "sitemap.xml";
 $generator->sitemapIndexFileName = "sitemap-index.xml";
 
 // adding url `loc`, `lastmodified`, `changefreq`, `priority`
-$generator->addUrl('http://example.com/url/path/', date('c'), 'always', '0.5');
+$generator->addUrl('http://example.com/url/path/', date('c'), 'always', '0.5', 'http://url-to-your-image');
 
 // generating internally a sitemap
 $generator->createSitemap();

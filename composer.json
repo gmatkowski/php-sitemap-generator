@@ -12,6 +12,11 @@
       "name": "Prisacari Dmitrii",
       "email": "prisacari.dmitrii@gmail.com",
       "homepage": "http://github.com/icamys/"
+    },
+    {
+      "name": "Grzegorz Matkowski",
+      "email": "info@gmatkowski.pl",
+      "homepage": "gmatkowski.pl"
     }
   ],
   "require": {

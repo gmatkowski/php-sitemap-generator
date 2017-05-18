@@ -310,6 +310,7 @@ class SitemapGenerator {
         $sitemapHeader = '<?xml version="1.0" encoding="UTF-8"?>' . $generatorInfo . '
                             <urlset
                                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' . "\r\n" . '
+                                xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"' . "\r\n" . '
                                 xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9' . "\n" . '
                                 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"' . "\n" . '
                                 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -336,7 +337,6 @@ class SitemapGenerator {
         $nonEmptyUrls = $this->urls->getSize() - $nullUrls;
 
         $chunks = ceil($nonEmptyUrls / $this->maxURLsPerSitemap);
-
         for ($chunkCounter = 0; $chunkCounter < $chunks; $chunkCounter++)
         {
             $xml = new \SimpleXMLElement($sitemapHeader);
@@ -366,8 +366,8 @@ class SitemapGenerator {
                 }
                 if ($this->urls[$urlCounter]->getSize() > 4)
                 {
-                    $image = $row->addChild('image:image');
-                    $image->addChild('image:loc', $this->urls[$urlCounter][self::URL_PARAM_IMAGE]);
+                    $image = $row->addChild('image:image', null, 'http://www.google.com/schemas/sitemap-image/1.1');
+                    $image->addChild('image:loc', $this->urls[$urlCounter][self::URL_PARAM_IMAGE], 'http://www.google.com/schemas/sitemap-image/1.1');
                 }
             }
             if (strlen($xml->asXML()) > self::MAX_FILE_SIZE)
