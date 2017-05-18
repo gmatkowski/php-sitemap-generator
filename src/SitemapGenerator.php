@@ -1,6 +1,6 @@
 <?php
 
-namespace Icamys\SitemapGenerator;
+namespace gmatkowski\SitemapGenerator;
 
 class SitemapGenerator {
 
