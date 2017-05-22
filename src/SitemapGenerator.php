@@ -366,8 +366,24 @@ class SitemapGenerator {
                 }
                 if ($this->urls[$urlCounter]->getSize() > 4)
                 {
+                    $imageData = $this->urls[$urlCounter][self::URL_PARAM_IMAGE];
+                    $imageUrl = $imageData;
+                    $imageTitle = null;
+                    if (is_array($imageData))
+                    {
+                        $imageUrl = $imageData[0];
+                        if (isset($imageData[1]))
+                        {
+                            $imageTitle = $imageData[1];
+                        }
+                    }
+
                     $image = $row->addChild('image:image', null, 'http://www.google.com/schemas/sitemap-image/1.1');
-                    $image->addChild('image:loc', $this->urls[$urlCounter][self::URL_PARAM_IMAGE], 'http://www.google.com/schemas/sitemap-image/1.1');
+                    $image->addChild('image:loc', $imageUrl, 'http://www.google.com/schemas/sitemap-image/1.1');
+                    if (isset($imageTitle))
+                    {
+                        $image->addChild('image:title', $imageTitle, 'http://www.google.com/schemas/sitemap-image/1.1');
+                    }
                 }
             }
             if (strlen($xml->asXML()) > self::MAX_FILE_SIZE)
