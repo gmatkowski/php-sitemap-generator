@@ -130,8 +130,7 @@ class SitemapGenerator {
      * @param string $baseURL You site URL, with / at the end.
      * @param string|null $basePath Relative path where sitemap and robots should be stored.
      */
-    public function
-    __construct($baseURL, $basePath = "")
+    public function __construct($baseURL, $basePath = "")
     {
         $this->urls = new \SplFixedArray();
         $this->baseURL = $baseURL;
@@ -408,7 +407,7 @@ class SitemapGenerator {
             for ($i = 0; $i < sizeof($this->sitemaps); $i++)
             {
                 $this->sitemaps[$i] = array(
-                    str_replace(".xml", ($i + 1) . ".xml.gz", $this->sitemapFileName),
+                    str_replace(".xml", ($i + 1) . ".xml" . ($this->createGZipFile ? '.gz' : ''), $this->sitemapFileName),
                     $this->sitemaps[$i]
                 );
             }
@@ -477,7 +476,15 @@ class SitemapGenerator {
             $this->writeFile($this->document->saveXML(), $this->basePath, $this->sitemapIndex[0]);
             foreach ($this->sitemaps as $sitemap)
             {
-                $this->writeGZipFile($sitemap[1], $this->basePath, $sitemap[0]);
+                if ($this->createGZipFile)
+                {
+                    $this->writeGZipFile($sitemap[1], $this->basePath, $sitemap[0]);
+                }
+                else
+                {
+                    $this->document->loadXML($sitemap[1]);
+                    $this->writeFile($this->document->saveXML(), $this->basePath, $sitemap[0]);
+                }
             }
         }
         else
