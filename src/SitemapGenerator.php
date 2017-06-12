@@ -489,11 +489,14 @@ class SitemapGenerator {
         }
         else
         {
-            $this->document->loadXML($this->sitemaps[0][1]);
-            $this->writeFile($this->document->saveXML(), $this->basePath, $this->sitemaps[0][0]);
-            if ($this->createGZipFile)
+            if (isset($this->sitemaps[0][1]) && !empty($this->sitemaps[0][1]))
             {
-                $this->writeGZipFile($this->sitemaps[0][1], $this->basePath, $this->sitemaps[0][0] . ".gz");
+                $this->document->loadXML($this->sitemaps[0][1]);
+                $this->writeFile($this->document->saveXML(), $this->basePath, $this->sitemaps[0][0]);
+                if ($this->createGZipFile)
+                {
+                    $this->writeGZipFile($this->sitemaps[0][1], $this->basePath, $this->sitemaps[0][0] . ".gz");
+                }
             }
         }
     }
